@@ -23,7 +23,7 @@ end script
 DONE
 sudo cat > /etc/consul/config.json << EOL
 {
-  "datacenter": "maiden1-dc",
+  "datacenter": "mdn1-dc",
   "data_dir": "/var/cache/consul",
   "log_level": "INFO",
   "node_name": "n6",
