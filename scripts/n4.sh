@@ -26,6 +26,7 @@ sudo cat > /etc/consul/config.json << EOL
   "datacenter": "mdn1-dc",
   "data_dir": "/var/cache/consul",
   "log_level": "INFO",
+  "enable_syslog": true,
   "node_name": "n4",
   "bind_addr": "0.0.0.0",
   "advertise_addr": "172.20.20.13",
