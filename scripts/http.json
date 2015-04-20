@@ -1,0 +1,12 @@
+{
+    "service": {
+        "name": "http",
+        "port": 80,
+        "check": {
+                "id": "http_check",
+                "name": "HTTP Health Check",
+   "script": "curl `hostname`",
+         "interval": "5s"
+        }
+    }
+}
