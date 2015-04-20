@@ -34,8 +34,6 @@ sudo cat > /etc/consul/config.json << EOL
   "node_name": "n2",
   "bind_addr": "0.0.0.0",
   "advertise_addr": "172.20.20.11",
-  "domain": "ASA.",
-  "recursor": "8.8.8.8",
   "encrypt": "p4T1eTQrIcK/MaRyrMMLzg==",
   "server": true
 }
