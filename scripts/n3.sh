@@ -22,7 +22,7 @@ script
   else
     echo "Config file not available."
   fi
-  exec /usr/bin/consul agent -config-file /etc/consul/config.json -ui-dir /var/consul_web_ui
+  exec /usr/bin/consul agent -config-file /etc/consul/config.json -config-dir /etc/consul/config.d -ui-dir /var/consul_web_ui
 end script
 DONE
 sudo cat > /etc/consul/config.json << EOL
