@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 $script = <<SCRIPT
 echo Installing dependencies...
-sudo apt-get install -y unzip curl
+sudo apt-get install -y unzip curl apache2
 echo Fetching Consul...
 cd /tmp/
 wget https://dl.bintray.com/mitchellh/consul/0.5.0_linux_amd64.zip -O consul.zip

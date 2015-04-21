@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo mkdir /var/cache/consul /etc/consul /etc/consul/config.d /var/consul_web_ui
+cp /vagrant/scripts/http.json /etc/consul/config.d
 wget https://dl.bintray.com/mitchellh/consul/0.5.0_web_ui.zip -O /var/consul_web_ui/0.5.0_web_ui.zip
 unzip /var/consul_web_ui/0.5.0_web_ui.zip -d /var/consul_web_ui/
 mv /var/consul_web_ui/dist/* /var/consul_web_ui/

@@ -5,7 +5,7 @@
         "check": {
                 "id": "http_check",
                 "name": "HTTP Health Check",
-   "script": "curl `hostname`",
+   "script": "curl http://$(dig @127.0.0.1 -p 8600 `hostname`.node.consul | grep ^`hostname` | awk '{print $5}')",
          "interval": "5s"
         }
     }

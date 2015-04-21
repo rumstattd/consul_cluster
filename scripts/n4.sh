@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo mkdir /var/cache/consul /etc/consul /etc/consul/config.d
+cp /vagrant/scripts/http.json /etc/consul/config.d
 echo 'OPTIONS="-ui-dir /var/consul_web_ui"' > /etc/default/consul
 sudo cat > /etc/init/consul.conf << DONE
 description     "Consul agent"
