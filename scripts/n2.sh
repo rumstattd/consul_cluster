@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo mkdir /var/cache/consul /etc/consul /etc/consul/config.d /var/consul_web_ui
 cp /vagrant/scripts/http.json /etc/consul/config.d
+cp /vagrant/scripts/randomizer.sh /etc/init.d
+ln -s /etc/init.d/randomizer.sh /etc/rc2.d/S99randomizer
 wget https://dl.bintray.com/mitchellh/consul/0.5.0_web_ui.zip -O /var/consul_web_ui/0.5.0_web_ui.zip
 unzip /var/consul_web_ui/0.5.0_web_ui.zip -d /var/consul_web_ui/
 mv /var/consul_web_ui/dist/* /var/consul_web_ui/
@@ -43,3 +45,5 @@ ln -s /lib/init/upstart-job /etc/init.d/consul
 service consul stop
 rm -rf /var/cache/consul/*
 service consul start
+sleep 1
+/etc/init.d/randomizer.sh

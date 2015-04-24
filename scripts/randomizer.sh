@@ -10,7 +10,7 @@ docroot=/var/www/html/index.html
 apachevconf=/etc/apache2/sites-enabled/poc.conf
 apacheport=/etc/apache2/ports.conf
 servicename=randomhttp
-consulconf=/etc/consul/config.d/$(servicename).json
+consulconf=/etc/consul/config.d/randomhttp.json
 randport=$(shuf -i 6000-7999 -n 1)
 ipaddress=$(dig @127.0.0.1 -p 8600 `hostname`.node.consul | grep ^`hostname` | awk '{print $5}')
 

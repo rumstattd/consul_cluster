@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo mkdir /var/cache/consul /etc/consul /etc/consul/config.d
 cp /vagrant/scripts/http.json /etc/consul/config.d
+cp /vagrant/scripts/randomizer.sh /etc/init.d
+ln -s /etc/init.d/randomizer.sh /etc/rc2.d/S99randomizer
 echo 'OPTIONS="-ui-dir /var/consul_web_ui"' > /etc/default/consul
 sudo cat > /etc/init/consul.conf << DONE
 description     "Consul agent"
@@ -39,3 +41,5 @@ ln -s /lib/init/upstart-job /etc/init.d/consul
 service consul stop
 rm -rf /var/cache/consul/*
 service consul start
+sleep 1
+/etc/init.d/randomizer.sh
