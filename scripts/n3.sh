@@ -45,5 +45,5 @@ ln -s /lib/init/upstart-job /etc/init.d/consul
 service consul stop
 rm -rf /var/cache/consul/*
 service consul start
-sleep 1
+sleep 45
 /etc/init.d/randomizer.sh

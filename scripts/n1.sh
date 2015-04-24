@@ -4,17 +4,19 @@ apt-get install haproxy
 mkdir /etc/haproxy/template
 cp /vagrant/bin/consul-template /usr/bin
 cp /vagrant/scripts/haproxy.ctmpl /etc/haproxy/template
-cp /vagrant/scripts/haproxyreconfig.sh /etc/init.d
-cp /vagrant/scripts/consultmpl.sh /etc/init.d
+#cp /vagrant/scripts/haproxyreconfig.sh /etc/init.d
+#cp /vagrant/scripts/consultmpl.sh /etc/init.d
+cp /vagrant/scripts/rc.local /etc/rc.local
 cp /vagrant/scripts/http.json /etc/consul/config.d
 cp /vagrant/scripts/randomizer.sh /etc/init.d
-ln -s /etc/init.d/consultmpl.sh /etc/rc2.d/S99consultmpl
-ln -s /etc/init.d/haproxyreconfig.sh /etc/rc2.d/S99haproxyreconfig
+#ln -s /etc/init.d/consultmpl.sh /etc/rc2.d/S99consultmpl
+#ln -s /etc/init.d/haproxyreconfig.sh /etc/rc2.d/S99haproxyreconfig
 ln -s /etc/init.d/randomizer.sh /etc/rc2.d/S99randomizer
 wget https://dl.bintray.com/mitchellh/consul/0.5.0_web_ui.zip -O /var/consul_web_ui/0.5.0_web_ui.zip
 unzip /var/consul_web_ui/0.5.0_web_ui.zip -d /var/consul_web_ui/
 mv /var/consul_web_ui/dist/* /var/consul_web_ui/
 rm -fR /var/consul_web_ui/dist/ 
+echo ENABLED=1 > /etc/default/haproxy
 echo 'OPTIONS="-ui-dir /var/consul_web_ui"' > /etc/default/consul
 sudo cat > /etc/init/consul.conf << DONE
 description     "Consul agent"
@@ -54,5 +56,5 @@ ln -s /lib/init/upstart-job /etc/init.d/consul
 service consul stop
 rm -rf /var/cache/consul/*
 service consul start
-sleep 1
+sleep 15
 /etc/init.d/randomizer.sh

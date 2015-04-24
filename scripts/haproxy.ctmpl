@@ -5,14 +5,16 @@ global
     user haproxy
     group haproxy
     daemon
-    maxconn {{key "service/haproxy/maxconn"}}
+    maxconn 1500
 
 defaults
     log	global
     mode {{key "service/haproxy/mode"}}
     option	httplog
-    option	dontlognull {{range ls "service/haproxy/timeouts"}}
-    {{.Key}} {{.Value}}{{end}}
+    option	dontlognull
+    timeout client 5000
+    timeout connect 4000
+    timeout server 30000
 
 listen http-in
     bind *:8000{{range service "randomhttp"}}
